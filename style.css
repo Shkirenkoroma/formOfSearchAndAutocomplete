@@ -1,60 +1,47 @@
 * {
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 body {
 	margin: 0;
-	background: url("./backimage.jpg");
-	background-size: cover;
+	background: url('./backimage.jpg');
 }
 .container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	max-width: 900px;
 	width: 100%;
+	height: calc(100vh - 220px);
 	margin: 0 auto;
 	padding: 5px 30px;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
 }
 .container__content {
 	max-width: 900px;
 	width: 100%;
 }
 .autocomplete {
-	position: relative;
 	display: inline-block;
+	position: relative;
 	max-width: 800px;
 	width: 100%;
 }
-#myInput {
-	max-width: 800px;
-	width: 100%;
-	border-radius: 10px;
-}
-.inputs {
+
+.fillFields {
 	margin-top: 100px;
 }
 input {
-	border: 1px solid transparent;
-	background-color: #f1f1f1;
+	max-width: 800px;
+	width: 100%;
 	padding: 10px;
 	font-size: 16px;
-	max-width: 800px;
-	width: 100%;
 	border-radius: 10px;
-}
-input[type="text"] {
+	border: 1px solid transparent;
 	background-color: #f1f1f1;
-	width: 100%;
-	max-width: 800px;
-	width: 100%;
 }
-input[type="submit"] {
-	background-color: DodgerBlue;
-	color: #fff;
-	cursor: pointer;
-}
+
 p {
 	font-size: 24px;
 	font-weight: 900;
@@ -62,38 +49,27 @@ p {
 }
 .autocomplete-items {
 	position: absolute;
-	border: 1px solid #d4d4d4;
-	border-bottom: none;
-	border-top: none;
-	z-index: 99;
 	top: 100%;
 	left: 0;
 	right: 0;
+	border-top: none;
+	border-bottom: none;
+	border: 1px solid #d4d4d4;
+	z-index: 99;
 }
 .autocomplete-items div {
-	padding: 10px;
 	cursor: pointer;
+	padding: 10px;
 	background-color: #fff;
 	border-bottom: 1px solid #d4d4d4;
 }
 .autocomplete-items div:hover {
 	background-color: #e9e9e9;
 }
-.autocomplete-active {
-	background-color: DodgerBlue !important;
-	color: #ffffff;
-}
-.inputs {
-	display: flex;
-	flex-direction: column;
-}
+
 .row {
 	display: flex;
 	flex-direction: column;
-}
-input {
-	max-width: 800px;
-	width: 100%;
 }
 
 label {

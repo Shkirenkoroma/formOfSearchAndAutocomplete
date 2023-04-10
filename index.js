@@ -11,12 +11,9 @@ function getValue() {
 function autocomplete(input, array) {
 	let currentFocus;
 	input.addEventListener("input", function (e) {
-		let a,
-			b,
-			i,
-			val = this.value;
+		let a, b, i, inlineString = this.value;
 		closeAllLists();
-		if (!val) {
+		if (!inlineString) {
 			return false;
 		}
 		currentFocus = -1;
@@ -25,10 +22,10 @@ function autocomplete(input, array) {
 		a.setAttribute("class", "autocomplete-items");
 		this.parentNode.appendChild(a);
 		for (i = 0; i < array.length; i++) {
-			if (array[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+			if (array[i].substr(0, inlineString.length).toUpperCase() == inlineString.toUpperCase()) {
 				b = document.createElement("DIV");
-				b.innerHTML = "<strong>" + array[i].substr(0, val.length) + "</strong>";
-				b.innerHTML += array[i].substr(val.length);
+				b.innerHTML = "<strong>" + array[i].substr(0, inlineString.length) + "</strong>";
+				b.innerHTML += array[i].substr(inlineString.length);
 				b.innerHTML += "<input type='hidden' value='" + array[i] + "'>";
 				b.addEventListener("click", function (e) {
 					input.value = this.getElementsByTagName("input")[0].value;
@@ -82,11 +79,11 @@ function autocomplete(input, array) {
 
 const arrayOfNameCompany = [];
 const getData = (queryString) => {
-	var url =
+	let url =
 		"https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party";
-	var token = "ecf93bd1f2b49ce8b854dccfd9b9c9d7ccb617fa";
-	var query = `${queryString}`;
-	var options = {
+	let token = "ecf93bd1f2b49ce8b854dccfd9b9c9d7ccb617fa";
+	let query = `${queryString}`;
+	let options = {
 		method: "POST",
 		mode: "cors",
 		headers: {
@@ -112,10 +109,10 @@ async function getDate(queryString) {
 
 async function getDateCompany(nameCompany) {
 	const data = await getData(nameCompany);
-	var shortName = document.getElementById("name_short");
-	var longName = document.getElementById("name_full");
-	var inn = document.getElementById("inn_kpp");
-	var address = document.getElementById("address");
+	let shortName = document.getElementById("name_short");
+	let longName = document.getElementById("name_full");
+	let inn = document.getElementById("inn_kpp");
+	let address = document.getElementById("address");
 	shortName.value = data[0].data.name.short_with_opf;
 	longName.value = data[0].data.name.full_with_opf;
 	inn.value = `${data[0].data.inn} /  ${data[0].data.kpp}`;
